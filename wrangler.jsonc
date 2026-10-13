@@ -1,0 +1,18 @@
+// The marketing site, served as static assets on Cloudflare (no Worker code).
+// Deploy: `npx wrangler deploy` from this folder, or push to main once the
+// repo is connected under Workers & Pages ▸ the worker ▸ Settings ▸ Builds.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "ichigo-ichigo-site",
+  "compatibility_date": "2026-10-13",
+  "assets": {
+    "directory": ".",
+    // /support.html redirects to /support; / serves index.html.
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "ichigoichigo.com", "custom_domain": true },
+    { "pattern": "www.ichigoichigo.com", "custom_domain": true }
+  ]
+}
